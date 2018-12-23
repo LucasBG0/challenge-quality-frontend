@@ -22,8 +22,6 @@ export class FotosPage {
     .subscribe(response => {
       this.items = response;
     },
-    error => {
-      console.log(error);
-    });
+    error => {});
   }
 }
