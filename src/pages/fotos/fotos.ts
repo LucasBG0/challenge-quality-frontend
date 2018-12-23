@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FotoService } from '../../app/services/domain/foto.service';
-
-/**
- * Generated class for the FotosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FotoDTO } from '../../models/foto.dto';
+import { API_CONFIG } from '../../config/api.config';
 
 @IonicPage()
 @Component({
@@ -16,13 +11,16 @@ import { FotoService } from '../../app/services/domain/foto.service';
 })
 export class FotosPage {
 
+  bucketUrl: String = API_CONFIG.bucketBaseUrl;
+  items: FotoDTO[];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public fotoService: FotoService) {
   }
 
   ionViewDidLoad() {
     this.fotoService.findAll()
     .subscribe(response => {
-      console.log(response);
+      this.items = response;
     },
     error => {
       console.log(error);

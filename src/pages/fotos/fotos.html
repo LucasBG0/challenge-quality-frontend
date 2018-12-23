@@ -11,5 +11,24 @@
 
 
 <ion-content padding>
-<p>Página de Fotos</p>
+  <ion-list>
+      <ion-item-sliding *ngFor="let item of items">
+        <button ion-item>
+          <ion-thumbnail item-start>
+            <img src="{{bucketUrl}}/photo{{item.id}}-small.jpg">
+          </ion-thumbnail>
+          <h2>{{item.latitude}}</h2>
+          <p>{{item.longitude}}</p>
+          <button ion-button clear item-end>Ver</button>
+        </button>
+        <ion-item-options side="right" (ionSwipe)="saveItem(item)">
+          <button ion-button expandable color="danger"  (click)="function()">
+              <ion-icon name="trash">Apagar</ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>    
 </ion-content>
+
+
+
