@@ -9,6 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FotoService } from './services/domain/foto.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
+import { ImageUtilService } from './services/image-util.service';
+
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FotoService,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    ImageUtilService,
+    Geolocation
   ]
 })
 export class AppModule {}

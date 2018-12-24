@@ -1,5 +1,6 @@
 export interface FotoDTO{
-    id: string;
+    id?: string;
     latitude: string;
     longitude: string;
+    imageUrl?: string;
 }

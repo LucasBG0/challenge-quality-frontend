@@ -16,7 +16,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             let errorObj = error;
             if (errorObj.error) {
                 errorObj = errorObj.error;
-                this.handleDefaultEror(errorObj);
+                //this.handleDefaultEror(errorObj);
             }
             if (!errorObj.status) {
                 errorObj = JSON.parse(errorObj);

@@ -1,19 +1,19 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" id="myMenu"></ion-icon>
     </button>
-    <ion-title>fotos</ion-title>
+    <ion-title>Galeria</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding>  
   <ion-list>
       <ion-item-sliding *ngFor="let item of items">
-        <button ion-item>
+        <button ion-item (click)="zoomImage(item.id)">
           <ion-thumbnail item-start>
             <img src="{{bucketUrl}}/photo{{item.id}}-small.jpg">
           </ion-thumbnail>
@@ -21,8 +21,8 @@
           <p>{{item.longitude}}</p>
           <button ion-button clear item-end>Ver</button>
         </button>
-        <ion-item-options side="right" (ionSwipe)="saveItem(item)">
-          <button ion-button expandable color="danger"  (click)="function()">
+        <ion-item-options side="right" (ionSwipe)="deleteImage(item.id)">
+          <button ion-button expandable color="danger"  (click)="deleteImage(item.id)">
               <ion-icon name="trash">Apagar</ion-icon>
           </button>
         </ion-item-options>
@@ -30,5 +30,14 @@
   </ion-list>    
 </ion-content>
 
+<ion-fab right bottom #fab2>
+    <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab color="secondary" (click)="getCameraPicture()"  [disabled]="cameraOn"><ion-icon name="camera"></ion-icon></button>
+      <button ion-fab color="secondary" (click)="getGalleryPicture()" [disabled]="cameraOn"><ion-icon name="photos"></ion-icon></button>
+      <button ion-fab *ngIf="picture" (click)="sendPicture()"><ion-icon name="send"></ion-icon></button>
+      <button ion-fab *ngIf="picture" (click)="cancel()"><ion-icon name="trash"></ion-icon></button>      
+    </ion-fab-list>
+  </ion-fab>
 
 

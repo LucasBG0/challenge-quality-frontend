@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Foto {{item?.id}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <img  src="{{bucketUrl}}/photo{{item?.id}}.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{item?.id}}
+        </ion-card-title>
+      <p>
+        {{item?.latitude}}
+      </p>
+      <p>
+        {{item?.longitude}}
+      </p>      
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+  <ion-card-content>
+    <div #map id="map"></div>
+  </ion-card-content>
+  </ion-card>
+</ion-content>
